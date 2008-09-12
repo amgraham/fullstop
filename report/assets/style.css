@@ -1,0 +1,244 @@
+/*-----------------------------------------------------------------LAYOUT-----*/
+  #box {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+    padding-top: .5em;
+  }
+  #control {
+    
+  }
+  #accounts {
+    border: 1px solid #eee;
+    height: 428px;
+  }
+  #loading {
+    float: right;
+    margin-top: .5em;
+  }
+  #leftCol {
+    width: 390px;
+  }
+  #rightCol {
+    border-left: 1px solid #eee;
+    float: right;
+    width: 400px;
+  }
+  #addData, #upcoming, #timeline {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  #eventDateCheck {
+    float: right;
+    width: 85%;
+    margin-top: 4px;
+    text-align: right;
+  }
+  ul.timeline li {
+  }
+  ul.timeline li .right {
+    margin-top: -20px;
+  }
+  .vcard {
+    margin-bottom: 1em;
+  }
+  .head .back {
+    display: none;
+  }
+  .head:hover .back {
+    display: inline;
+  }
+/*-------------------------------------------------------------------HTML-----*/
+  body, html { 
+    margin: 0em; 
+    padding: 0px; 
+    font-size: .9em; 
+    color: #333; 
+    line-height: 1.4em;
+    font-family: sans-serif; 
+    text-align: center;
+  }
+  html { 
+    margin: 0;
+    padding: 0;
+  }
+/*-------------------------------------------------------------------TEXT-----*/
+  h1 { 
+    font-size: 1.2em; 
+    margin: 0; 
+    padding: 0;
+    display: inline;
+  }
+  h1+ul, h2+ul, h3+ul {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  h2, caption {
+    font-size: 1.1em; 
+    margin: 0px; 
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+  }
+  h3 {
+    font-size: .9em; 
+    margin: 0px; 
+    padding: 0;
+    font-weight: bold;
+  }
+  #notes h4 {
+    display: inline;
+  }
+  strong {
+    background: #ffffcc;
+    padding: .2em;
+    font-weight: normal;
+  }
+  p { 
+    margin-top: 0; 
+    padding-top: 0; 
+    margin-bottom: 0;
+  }
+  .negative {
+    color: red;
+  }
+  .positive {
+    color: green;
+  }
+  .title {
+    font-weight: bold;
+  }
+  .right {
+    float: right;
+  }
+/*------------------------------------------------------------------LINKS-----*/
+  a, a:visited, *[onclick] { 
+    color: blue; 
+    text-decoration: none; 
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  a:hover, a:visited:hover, *[onclick]:hover { 
+    border-bottom: 1px solid blue; 
+  }
+  a img {
+    border: 0px;
+  }
+  td[onclick] {
+    border-bottom: 0px;
+  }
+/*------------------------------------------------------------------TABLE-----*/
+  table {
+    width: 100%;
+  }
+  table {
+    border-collapse: collapse;
+    border: 1px solid #eee;
+  }
+  table .city {
+    text-align: right;
+  }
+  th {
+    background: #ffffcc;
+    padding: 5px;
+    border-bottom: 1px solid #efefef;
+  }
+  td {
+    padding: 2px;
+    padding-left: 5px;
+  }
+  #load {
+    border: 0px;
+  }
+  #load tbody {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  td.total {
+    border-top: 1px solid #eee;
+    font-weight: bold;
+  }
+  tr.rowodd {
+  
+  }
+  
+  tr.roweven {
+    background-color: #F2F2F2;
+  }
+  
+  .sortcol {
+    cursor: pointer;
+    padding-right: 20px;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+  .sortasc {
+    background-color: #DDFFAC;
+    background-image: url(/assets/up.gif);
+  }
+  .sortdesc {
+    background-color: #B9DDFF;
+    background-image: url(/assets/down.gif);
+  }
+  .nosort {
+    cursor: default;
+  }
+/*------------------------------------------------------------------FORMS-----*/
+  label {
+    margin: 0;
+    padding: 0;
+  }
+  input[type=text] {
+    width: 193px;
+  }
+  input {
+    border: 1px solid #eee;
+    font-size: .9em; 
+    padding: 4px .5em; 
+    display: inline;
+  }
+  select {
+    border: 1px solid #eee;
+    font-size: .9em; 
+    padding: 4px .5em 4px .5em; 
+    display: inline;
+  }
+  option {
+    margin-right: 10px;
+    padding-left: 10px;
+  }
+  input[name=search] {
+    background: url('/assets/magnifier.png')  5px 5px #fff no-repeat;
+    padding-left: 24px;
+  }
+  textarea {
+    width: 385px;
+    padding: 2px;
+    border: 1px solid #eee;
+  }
+  input[type=hidden] {
+    border: 0px;
+    display: none;
+  }
+/*------------------------------------------------------------------LISTS-----*/
+  ul { 
+    margin: 0; 
+    padding: 0; 
+    list-style-type: none;
+  }
+  ol {
+    margin: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    padding-left: 2em;
+  }
+  li { 
+    margin: 0;
+    margin-bottom: .5em;
+  }
+  .inline, ul.inline li {
+    display: inline;
+  }
+/*----------------------------------------------------------------CLASSES-----*/

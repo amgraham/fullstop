@@ -1,0 +1,146 @@
+body, html {
+  margin: 1em;
+  padding: 0px;
+  font-size: .9em;
+  color: #333;
+  line-height: 1.4em;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+#definition {
+  width: 70em;
+  margin: 1em auto;
+  text-align: left;
+}
+h1 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  margin-top: .5em;
+  font-weight: normal;
+}
+.inline {
+  display: inline;
+}
+p {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+a, a:visited, [onclick] {
+  color: blue;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+a:hover, a:visited:hover, [onclick]:hover {
+  border-bottom: 1px solid blue;
+}
+p+p {
+  text-indent: 1em;
+}
+.logged {
+  font-size: .9em;
+  color: #999;
+  margin-top: 1em !important;
+  display: block;
+}
+strong {
+  background: #ffffcc;
+  font-weight: normal;
+  padding: 2px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+th {
+  background: #efefef;
+  border-bottom: 1px solid #ccc;
+}
+td, th {
+  padding: 5px;
+}
+  #loading {
+    float: right;
+  }
+td + td {
+  border-left: 1px solid #ccc;
+}
+tbody tr:hover {
+  background: #ffffcc;
+}
+#command {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: .5em;
+  padding-top: .5em;
+}
+tfoot {
+  border-top: 1px solid #ccc;
+}
+tr.rowodd {
+}
+tr.roweven {
+  background-color: #F2F2F2;
+}
+tbody {
+  border-bottom: 1px solid #ccc;
+}
+.sortcol {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.sortasc:hover, .sortcol:hover {
+  background-color: #B9DDFF;
+  background-image: url(assets/down.gif);
+}
+.sortdesc:hover {
+  background-color: #DDFFAC;
+  background-image: url(assets/up.gif);
+}
+.sortasc {
+  background-color: #DDFFAC;
+  background-image: url(assets/up.gif);
+}
+.sortdesc {
+  background-color: #B9DDFF;
+  background-image: url(assets/down.gif);
+}
+.nosort, .nosort:hover {
+  cursor: default;
+  background: #efefef;
+}
+.scroll-table-head {
+  width: 70em;
+}
+.scroll-table-body {
+  width: 70em;
+  height: 20em;
+}
+.selectBoxes {
+  width: 20px !important;
+}
+select, input {
+  display: inline;
+}
+p.instructions {
+  padding-top: .5em;
+  text-indent: 0;
+}
+.head, .head * {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
