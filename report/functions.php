@@ -193,13 +193,18 @@ function debug(&$var, $r = NULL) {
 
 }
 
-define(dbU, "root"); define(dbP, "humpty"); define(dbD, "errors");
+
+define(dbU, "root"); define(dbP, "humpty"); define(dbD, "full-stop");
 
 if (!@mysql_connect('localhost', dbU, dbP)) {
+  $errorType = "mySql";
+  include("../fullstop.php");
   die(); 
 }
 
 if (!@mysql_select_db(dbD)) {
+  $errorType = "mySql";
+  include("../fullstop.php");
   die(); 
 }
 ?>

@@ -6,7 +6,7 @@ require("markdown.php");
 $today = date("Y-m-d");
 $year = date("Y");
 
-define(dbU, "root"); define(dbP, "humpty"); define(dbD, "agenda");
+define(dbU, "root"); define(dbP, "humpty"); define(dbD, "events");
 
 if (!@mysql_connect('localhost', dbU, dbP)) {
   $erRsn = "dbError";

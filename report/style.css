@@ -71,9 +71,9 @@ th {
 td, th {
   padding: 5px;
 }
-  #loading {
-    float: right;
-  }
+#loading {
+  float: right;
+}
 td + td {
   border-left: 1px solid #ccc;
 }
