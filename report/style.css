@@ -12,7 +12,7 @@ body, html {
 /*    margin: 2em auto;*/
 }
 #meta {
-    position: fixed;
+
     height: 2em;
 /*    width: 19em;*/
     background: #ccc;
@@ -24,7 +24,6 @@ body, html {
 /*    float: right;*/
 /*    width: 60em;*/
     position: relative;
-    top: 2em;
     left: 0;
     bottom: 0;
     right: 0;

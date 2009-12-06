@@ -4,7 +4,9 @@ $potentialAssets = array(
     // etc
     ".css", ".js",
     //images
-    ".png", ".gif", ".jpg", ".ico"
+    ".png", ".gif", ".jpg", ".ico",
+    // downloads
+    ".zip", ".tar.gz", ".pdf"
 
 );
 
@@ -62,17 +64,25 @@ $httpCodes = array(
     "505" => array("HTTP Version Not Supported",        "server errors",             "server error"),
 );
 
+function excerpt($string) {
+	if (strlen($string) > 50) {
+		$string = substr($string, 0, 25). "...".substr($string, strlen($string) - 25, 25);
+	}
+	
+	return $string;
+}
+
 define(dbU, "root"); define(dbP, "humpty"); define(dbD, "dev_full-stop");
 
 if (!@mysql_connect('localhost', dbU, dbP)) {
-  $errorType = "mySql";
-  include("../fullstop.php");
-  die(); 
+	$errorType = "mySql";
+	include("../fullstop.php");
+	die(); 
 }
 
 if (!@mysql_select_db(dbD)) {
-  $errorType = "mySql";
-  include("../fullstop.php");
-  die(); 
+	$errorType = "mySql";
+	include("../fullstop.php");
+	die(); 
 }
 ?>

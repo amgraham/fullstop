@@ -1,51 +1,52 @@
 <?php require_once("./functions.php");
-    
-    $assetSql = array();
-    foreach ($potentialAssets as $asset) {
-        $assetSql[] = "request LIKE '%$asset'";
-    }
-    
-    $pageSql = array();
-    foreach ($potentialPages as $page) {
-        $pageSql[] = "request LIKE '%$page%'";
-    }
-    
-    $total["all"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE status = 0"));
-    
-    $total["assets"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join($assetSql, " OR ")." ORDER BY date"));
-    
-    $total["folders"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE request LIKE '%/' ORDER BY date"));
-    
-    $ff = "SELECT * FROM events WHERE ".join($pageSql, " OR ")." GROUP BY request ORDER BY date";
-    
-    //echo $ff;
-    
-    $total["pages"] = mysql_num_rows(mysql_query($ff));
-    
-    $total["internal"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE referrer LIKE 'http://aramaki%' ORDER BY date"));
-    
-    $total["external"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE referrer NOT LIKE 'http://aramaki%' AND referrer != '' ORDER BY date"));
-    
-    $http = mysql_query("SELECT DISTINCT type FROM events WHERE status = 0");
-    
-    $types = array();
-    
-    while ($r = mysql_fetch_assoc($http)) {
-    
-        $types[$r["type"]] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = '".$r["type"]."' AND status = 0"));
-        
-    }
 
-    $p = array();
-    
-    foreach($types as $key=>$value) {
-    
-        if (key_exists($key, $httpCodes)) {
-            $s = ($types[$key] == 1) ? $s = 2 : $s = 1;
-            $p[] = array($key, $types[$key] . " " . $httpCodes[$key][$s]);
-        }
-    }
-    
+	$assetSql = array();
+	foreach ($potentialAssets as $asset) {
+		$assetSql[] = "request LIKE '%$asset'";
+	}
+
+	$pageSql = array();
+	foreach ($potentialPages as $page) {
+		$pageSql[] = "request LIKE '%$page%'";
+	}
+
+	$total["all"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE status = 0"));
+
+	$total["assets"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join($assetSql, " OR ")." ORDER BY date"));
+
+	$total["pages"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join($pageSql, " OR ")." ORDER BY date"));
+
+	$total["folders"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE request LIKE '%/' ORDER BY date"));
+
+	$ff = "SELECT * FROM events WHERE ".join($pageSql, " OR ")." GROUP BY request ORDER BY date";
+
+	//echo $ff;
+
+	$total["pages"] = mysql_num_rows(mysql_query($ff));
+
+	$total["internal"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE referrer LIKE 'http://aramaki%' ORDER BY date"));
+
+	$total["external"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE referrer NOT LIKE 'http://aramaki%' AND referrer != '' ORDER BY date"));
+
+	$http = mysql_query("SELECT DISTINCT type FROM events WHERE status = 0");
+
+	$types = array();
+
+	while ($r = mysql_fetch_assoc($http)) {
+		$types[$r["type"]] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = '".$r["type"]."' AND status = 0"));
+		
+	}
+
+	$p = array();
+
+	foreach($types as $key=>$value) {
+
+		if (key_exists($key, $httpCodes)) {
+			$s = ($types[$key] == 1) ? $s = 2 : $s = 1;
+			$p[] = array($key, $types[$key] . " " . $httpCodes[$key][$s]);
+		}
+	}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -68,6 +69,7 @@
 
         <div id='definition'>
         
+        
             <form id="meta" method="GET" action="./table.php">
                 
                 <select name="errorCode">
@@ -80,6 +82,8 @@
                 <select name="resources">
                     <option value="all">All resources</option>
                     <?php if ($total["assets"] > 0) { ?><option value="assets"><?php echo $total["assets"]; ?> assets</option><?php } ?>
+                    <?php if ($total["pages"] > 0) { ?><option value="pages"><?php echo $total["pages"]; ?> pages</option><?php } ?>
+                    <?php if ($total["folders"] > 0) { ?><option value="pages"><?php echo $total["folders"]; ?> folders</option><?php } ?>
                 </select>
                 
                 <select name="referrers">

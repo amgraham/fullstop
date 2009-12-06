@@ -23,6 +23,18 @@
                 
             }
             
+            if ($_GET["resources"] == "pages") {
+            
+                $pagesSql = array();
+                foreach ($potentialPages as $page) {
+                    $pageSql[] = "request LIKE '%$page' ";
+                }
+                
+                $query .= "(".join($pageSql, " OR ").")";
+                
+            }
+            
+            
             $query .= " AND ";
             
         } 
@@ -46,7 +58,7 @@
         
     }
     
-    if ($_GET["group"] == "true") {
+    if ($_GET["group"] != "true") {
         $group = " GROUP BY request ";
     } else {
         $group = '';
@@ -68,9 +80,9 @@
         <?php while ($event = mysql_fetch_assoc($load)) { ?>
         <tr>
             <td class='code'><span title="<?php echo $httpCodes[$event['type']][0]; ?>"><?php echo $event["type"]; ?></span></td>
-            <td><?php echo $event["request"]; ?></td>
-            <td><?php echo $event["referrer"]; ?></td>
-            <td><?php echo date("M jS", strtotime($event["date"] . ' ' . $event["time"])); ?></td>
+            <td><?php echo excerpt($event["request"]); ?></td>
+            <td><?php echo excerpt($event["referrer"]); ?></td>
+            <td><?php echo date("D, M jS Y", strtotime($event["date"] . ' ' . $event["time"])); ?></td>
         </tr>
         <?php } ?>
     </table>
