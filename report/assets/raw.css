@@ -1,0 +1,133 @@
+body, html {
+  padding: 0px;
+  font-size: .9em;
+  color: #333;
+  line-height: 1.4em;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#definition {
+/*    width: 80em;*/
+/*    margin: 2em auto;*/
+}
+#meta {
+
+    height: 2em;
+/*    width: 19em;*/
+    background: #ccc;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+#data {
+/*    float: right;*/
+/*    width: 60em;*/
+    position: relative;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+h1 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+a, a:visited {
+  color: blue;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+a:hover, a:visited:hover {
+  border-bottom: 1px solid blue;
+}
+p+p {
+  margin-top: 1em;
+}
+strong {
+  background: #ffffcc;
+  font-weight: normal;
+  padding: 2px;
+}
+td.code, th.code {
+    text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  border-top: 1px solid #ccc;
+  font-size: 70%;
+}
+th {
+  background: #efefef;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+th {
+    font-weight: normal;
+}
+th.strong {
+    font-weight: bold;
+}
+td {
+  padding: 2px 5px;
+}
+th {
+    padding: 0 5px;
+}
+#loading {
+  float: right;
+}
+td + td {
+  border-left: 1px solid #ccc;
+}
+tbody tr:hover {
+  background: #ffffcc;
+}
+tr.rowodd {
+}
+tr.roweven {
+  background-color: #F2F2F2;
+}
+tbody {
+  border-bottom: 1px solid #ccc;
+}
+.sortcol {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.sortasc:hover, .sortcol:hover {
+  background-color: #B9DDFF;
+  background-image: url(assets/down.gif);
+}
+.sortdesc:hover {
+  background-color: #DDFFAC;
+  background-image: url(assets/up.gif);
+}
+.sortasc {
+  background-color: #DDFFAC;
+  background-image: url(assets/up.gif);
+}
+.sortdesc {
+  background-color: #B9DDFF;
+  background-image: url(assets/down.gif);
+}
+.nosort, .nosort:hover {
+  cursor: default;
+  background: #efefef;
+}
+.scroll-table-head {
+  width: 70em;
+}
+.scroll-table-body {
+  width: 70em;
+  height: 20em;
+}

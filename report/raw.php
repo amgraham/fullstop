@@ -55,7 +55,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;" />
         <meta http-equiv="Content-Language" content="en-US" />
         <title><?php echo $total["all"]; ?> Full&ndash;Stop&apos;s</title>
-        <link rel="stylesheet" type="text/css" media="screen" title="default" href="../assets/style.css" />
+        <link rel="stylesheet" type="text/css" media="screen" title="default" href="../assets/raw.css" />
         <!-- 1.6.0.3 -->
         <script src="../assets/prototype.js" type="text/javascript"></script>
         <script src="../assets/fastinit.js" type="text/javascript"></script>
