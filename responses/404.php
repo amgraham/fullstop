@@ -19,7 +19,7 @@
 			#requested-file { font-face: monospace; position: absolute; left: 0; right: 0; padding-left: 3em; white-space: nowrap; }
 			#requested-file + p { padding-top: 4em; }
 			.logged {font-size: .9em;color: #999;margin-top: 1em !important;display: block;}
-			.block {display: block; min-width: 42em; scroll: auto;margin: .5em 0;background: #ffffcc;font-family: sans-serif;border: 1px solid #ccc;padding: 4px 1em; list-style-type: none; line-height: 1.6em;}
+			.block {display: block; min-width: 42em; scroll: auto;margin: .5em 0;background: #ffffcc;font-family: sans-serif;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; padding: 4px 1em; list-style-type: none; line-height: 1.6em;}
 			a.requested ( color: #333; )
 			-->
 		</style>

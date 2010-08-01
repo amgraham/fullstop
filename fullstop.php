@@ -22,19 +22,6 @@ if ($_SERVER["HTTP_USER_AGENT"] == "fullStopScript") {
 }
 
 if ($_SERVER["REQUEST_URI"] == "/favicon.ico") {
-	//if the user_agent equals what we set it to when we
-	//start requesting the structure of this reqested url we need to die.
-	//if we don't we can crash the server
-
-	//each req will re-request subsequent pages:
-	//so a req like domain.com/path/to/folder/and/file.php
-	//will req domain.com/path/, domain.com/path/to/, domain.com/path/to/folder/
-	//and so on.
-
-	//the problem is that each of those requests could get this error page.
-	//meaning that we'll re-request them again, and again, and again, until we run out of memory.
-
-	//it's bad; and shared-hosts don't like stuff like that, so if we catch a req with the user agent that we set below; kill the script
 	header("HTTP/1.1 404 Not Found");
 	die;
 }
