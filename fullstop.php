@@ -14,6 +14,28 @@ if ($_SERVER["HTTP_USER_AGENT"] == "fullStopScript") {
 	//meaning that we'll re-request them again, and again, and again, until we run out of memory.
 
 	//it's bad; and shared-hosts don't like stuff like that, so if we catch a req with the user agent that we set below; kill the script
+	
+	// this little bit assures that this script doesn't spwan off hundreds of other error scripts.
+	header("HTTP/1.1 404 Not Found");
+	//then 
+	die;
+}
+
+if ($_SERVER["REQUEST_URI"] == "/favicon.ico") {
+	//if the user_agent equals what we set it to when we
+	//start requesting the structure of this reqested url we need to die.
+	//if we don't we can crash the server
+
+	//each req will re-request subsequent pages:
+	//so a req like domain.com/path/to/folder/and/file.php
+	//will req domain.com/path/, domain.com/path/to/, domain.com/path/to/folder/
+	//and so on.
+
+	//the problem is that each of those requests could get this error page.
+	//meaning that we'll re-request them again, and again, and again, until we run out of memory.
+
+	//it's bad; and shared-hosts don't like stuff like that, so if we catch a req with the user agent that we set below; kill the script
+	header("HTTP/1.1 404 Not Found");
 	die;
 }
 
@@ -28,7 +50,7 @@ if (!@mysql_select_db('dev_full-stop')) {   include("./assets/codes/db.html"); d
 //
 //set some configuration options; leave as the default unless you know what you're doing
 //
-$buildReq   = true; // will require previous folders in the requested URL
+$buildReq   = false; // will require previous folders in the requested URL
 //
 //these are simple variables, and default strings that are needed throughout the script
 //
@@ -81,6 +103,7 @@ function backBtn($ref, $refParsed, $hName) {
 //custom header request; *a lot* like the original
 //
 function myHeaderRequest($url) {
+
 	$getHeaders = @get_headers($url, 1);
 	if (strpos($getHeaders[0], '200')) { //if the main response contains '200' it exists
 		return true;
