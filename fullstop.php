@@ -50,7 +50,7 @@ $refParsed 	= parse_url($ref);// make the ref pretty; split it up into hName, pa
 //$agent		= $_SERVER["HTTP_USER_AGENT"];// who's requesting us;
 $phpUA		= ini_get('user_agent');// the original PHP user agent used for getting files
 $htDocs		= $_SERVER["DOCUMENT_ROOT"];// the base of your domain (/var/www/)
-$reqArray	= split('/', $req);// split the req on "/"
+$reqArray	= explode('/', $req);// split the req on "/"
 array_shift($reqArray);// drop the first element (it's empty)
 //$reqParsed	= parse_url($req);// make the req pretty; split it up into hName, path, et cetera
 $base		= "http://" . $hName . "/";// the basis for urls from here

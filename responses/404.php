@@ -7,7 +7,7 @@
 		<style type="text/css" media="all">
 			<!--
 			body, html {margin: 1em;padding: 0px;font-size: .9em;color: #333;line-height: 1.4em;font-family: sans-serif;text-align: left;margin: 0;padding: 0;}
-			#definition {width: 45em;margin: 3em;text-align: left;}
+			#definition {width: 45em;margin: 2.5em;text-align: left;}
 			#go {margin: 1em 0;font-size: 1.4em;}
 			#go a {padding: .5em 1.5em;border: 1px solid #ccc;background: #ffffcc;}
 			h1 {font-size: 1.2em;margin: 0;padding: 0;}
@@ -16,11 +16,11 @@
 			a, a:visited {color: blue;text-decoration: none;border-bottom: 1px solid #ccc;}
 			a:hover, a:visited:hover {border-bottom: 1px solid blue;}
 			p+p, div+p {text-indent: 1em; margin-top: 1em;}
-			#requested-file { font-face: monospace; position: absolute; left: 0; right: 0; padding-left: 3em; white-space: nowrap; }
-			#requested-file + p { padding-top: 4em; }
+			#requested-file { position: absolute; left: 0; right: 0; padding: 1em 2.5em 1em 2.5em; white-space: nowrap; overflow: auto;}
+			#requested-file + p { margin-top: 6em; }
 			.logged {font-size: .9em;color: #999;margin-top: 1em !important;display: block;}
 			.block {display: block; min-width: 42em; scroll: auto;margin: .5em 0;background: #ffffcc;font-family: sans-serif;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; padding: 4px 1em; list-style-type: none; line-height: 1.6em;}
-			a.requested ( color: #333; )
+			a.requested { color: #333; }
 			-->
 		</style>
 	</head>

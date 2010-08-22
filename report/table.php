@@ -69,9 +69,10 @@
     $load = mysql_query($query);
 
 ?>
-    
+    <form>
     <table class="sortable" id="table">
         <tr>
+            <th class='no-sort'></th>
             <th class='code'>Code</th>
             <th class='strong request'>Request</th>
             <th class='strong referrer'>Referrer</th>
@@ -79,6 +80,7 @@
         </tr>
         <?php while ($event = mysql_fetch_assoc($load)) { ?>
         <tr>
+            <td><input type="checkbox" /></td>
             <td class='code'><span title="<?php echo $httpCodes[$event['type']][0]; ?>"><?php echo $event["type"]; ?></span></td>
             <td><?php echo excerpt($event["request"]); ?></td>
             <td><?php echo excerpt($event["referrer"]); ?></td>
@@ -86,3 +88,4 @@
         </tr>
         <?php } ?>
     </table>
+    </form>
