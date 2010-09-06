@@ -69,8 +69,17 @@ $errorType = $_GET["code"];
 $date = date("Y-m-d");
 $time = date("H:i:s");
 
-//add the data to the database
-$query = mysql_query("INSERT INTO events (`type`,`request`,`referrer`,`date`,`time`) VALUES('$errorType', '$req', '$ref', '$date', '$time')");
+// check to see if it exists a;reasy
+$check = mysql_query("SELECT * FROM events WHERE request = '$req' AND type = '$errorType'");
+
+if (mysql_num_rows($check) == 0) {
+	//add the data to the database
+	$query = mysql_query("INSERT INTO events (`type`,`request`, `hits`) VALUES('$errorType', '$req', '1')");
+} else {
+	mysql_query("UPDATE events SET `hits` = ".$check['hits'] + 1." WHERE id = '".$check["id"]."'");
+	//$query = mysql_query("INSERT INTO events (`type`,`request`, `hits`) VALUES('$errorType', '$req', '1')");
+}
+
 
 //generates a back button; if we can determine where they came from
 function backBtn($ref, $refParsed, $hName) {

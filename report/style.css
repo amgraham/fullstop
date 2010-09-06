@@ -1,0 +1,92 @@
+	body 
+	{
+	 	margin: 1em 1em; 
+		padding: 0; 
+		font-family: "Georgia";
+		font-size: .8em;
+		line-height: 1.4em;
+		color: #666;
+	}
+	
+	a, a:visited, span[onclick] 
+	{ 
+		color: #333; 
+		text-decoration: none;  
+		cursor: pointer;
+	}
+	
+	a:hover, a:visited:hover, span:hover[onclick], span:visited:hover[onclick] 
+	{ 
+		border-bottom: 1px solid #ccc;
+	}
+	
+	h1 
+	{
+		font-size: 120%;
+		margin: 0; padding: 0;
+	}
+	
+	p 
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	form 
+	{
+		margin: 0em 0;
+	}
+
+	.even
+	{
+		background:#efefef;
+	}
+
+	table
+	{
+		width: 100%;
+		border-collapse: collapse;
+		border-top: 1px solid #ccc;
+	}
+	
+	.current 
+	{
+		border-bottom: 1px solid #ccc;
+	}
+	
+	#note 
+	{
+		float: right;
+		width: 10em;
+		text-align: right;
+	}
+	
+	td
+	{
+		padding:2px 5px;
+	}
+
+	tr.head:hover
+	{
+		background:#fff;
+	}
+	
+	td 
+	{
+		width: 2em;
+	}
+	
+	td + td 
+	{
+		width: 1em;
+	}
+	
+	td + td + td 
+	{
+		width: 100em;
+	}
+		
+	tr:hover
+	{
+		background:#ffc;
+	}

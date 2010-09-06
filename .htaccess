@@ -1,5 +1,1 @@
 ErrorDocument 404 "/dev/fullstop/fullstop.php?code=404
-
-RewriteEngine On
-
-RewriteRule ^/raw /raw.php

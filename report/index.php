@@ -1,28 +1,14 @@
-<?php require_once("./functions.php"); 
+<?php 
 
-$total["all"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE status = 0"));
-$total["401"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 401"));
-$total["403"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 403"));
-$total["404"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 404"));
-$total["408"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 408"));
-$total["410"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 410"));
-$total["500"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = 500"));
+	include_once("./configuration.php");
 
-$total["unknown_code"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE type = ''"));
+	$note = $memo->get();
+	
+	$broken = mysql_num_rows(mysql_query("SELECT * FROM events WHERE `ignore` = 0 AND `trash` = 0"));
+	$deleted = mysql_num_rows(mysql_query("SELECT * FROM events WHERE `ignore` = 0 AND `trash` = 1"));
+	$ignored = mysql_num_rows(mysql_query("SELECT * FROM events WHERE `ignore` = 1 AND `trash` = 0"));
+	//$redirects = mysql_num_rows(mysql_query("SELECT * FROM events WHERE `ignore` = 0 AND `trash` = 0"));
 
-$assetSql = array();
-foreach ($potentialAssets as $asset) {
-    $assetSql[] = "request LIKE '%$asset'";
-}
-
-$pageSql = array();
-foreach ($potentialPages as $page) {
-	$pageSql[] = "request LIKE '%$page%'";
-}
-
-$total["pages"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join($pageSql, " OR ")." ORDER BY date"));
-
-$total["assets"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join($assetSql, " OR ")." ORDER BY date"));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -32,39 +18,58 @@ $total["assets"] = mysql_num_rows(mysql_query("SELECT * FROM events WHERE ".join
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;" />
         <meta http-equiv="Content-Language" content="en-US" />
-        <title><?php echo $total["all"]; ?> Full&ndash;Stop&apos;s</title>
-        <link rel="stylesheet" type="text/css" media="screen" title="default" href="style2.css" />
+        <title>Full&ndash;Stop</title>
+        <link rel="stylesheet" type="text/css" media="screen" title="default" href="./style.css" />
         <!-- 1.6.0.3 -->
-        <script src="./assets/prototype.js" type="text/javascript"></script>
+        <script src="./prototype.js" type="text/javascript"></script>
+        <script src="./script.js" type="text/javascript"></script>
                        
     </head>
     
     <body>
-
+		<div id="note"><?php echo $note; ?></div>
         <div id='main'>
-        <h1>There are <?php echo $total["all"]; ?> events</h1>
+        <form method="post" action="./actions.php">
         
-        <p>which contain: <?php if ($total["404"] > 0) { ?><?php echo $total["404"]; ?> missing files, <?php } ?>
-        <?php if (($total["401"] + $total["403"]) > 0) { ?><?php echo  ($total["401"] + $total["403"]); ?> authorization errors, <?php } ?>
-        <?php if ($total["408"] > 0) { ?><?php echo $total["408"]; ?> timeouts, <?php } ?>
-        <?php if ($total["410"] > 0) { ?><?php echo $total["410"]; ?> deleted files, <?php } ?>
-        <?php if ($total["unknown_code"] > 0) { ?><?php echo $total["unknown_code"]; ?> unknown errors, <?php } ?>
-        and 
-        <?php if ($total["500"] > 0) { ?><?php echo $total["500"]; ?> server errors<?php } ?>.</p>
-        
-        <p>In addition to that, there are <?php echo $total["assets"]; ?> errors with <span class='help'>assets</span> &amp; <?php echo $total["pages"]; ?> missing pages.</p>
-        
+        	<div id="control">
+				<h1>Full&ndash;Stop</h1>
+				
+				<p><a id="broken" onclick="loadView('broken'); return false;"><?php echo pluralizer($broken, "There are !$ broken events", "There is !$ broken event", "!$"); ?></a>, 
+				along with <a id="trash" onclick="loadView('trash'); return false;"><?php echo pluralizer($deleted, "$ deleted events", "$ deleted event", "$"); ?></a>,
+				
+				<a id="redirect" onclick="loadView('redirect'); return false;"><?php echo $redirects; ?> redirect(s)</a>, 
+				and <a id="trash" onclick="loadView('ignore'); return false;"><?php echo pluralizer($ignored, "$ ignored events", "$ ignored event"); ?></a></p>
+        	</div>
+        	
+        	
+        	<div id="events">
+				<?php require("table.php"); ?>
+
+            <div>
             
+
+        </form>
         </div>
     
     </body>
     
         <script type="text/javascript" language="javascript">
             //<![CDATA[
-            
+          function toggleChecked(key) {
+          	//var toggle = $(id).checked;
+          	if ($(key).checked == 1) {
+          		$(key).checked = 0;
+          	} else {
+          		$(key).checked = 1;
+          	}
+          }
+          
+          function loadView(view) {
+          	new Ajax.Updater("events", "table.php?view="+view);
+			$(view).addClassName("current");
+          }
           
           //]]>
         </script>
     
 </html>
-
