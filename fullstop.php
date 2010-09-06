@@ -78,7 +78,8 @@ if (mysql_num_rows($check) == 0) {
 	//add the data to the database
 	$query = mysql_query("INSERT INTO events (`type`,`request`, `hits`) VALUES('$errorType', '$req', '1')");
 } else {
-	mysql_query("UPDATE events SET `hits` = ".$check['hits'] + 1." WHERE id = '".$check["id"]."'");
+	$i = $check["hits"] + 1;
+	mysql_query("UPDATE events SET `hits` = $i WHERE id = '".$check["id"]."'");
 	//$query = mysql_query("INSERT INTO events (`type`,`request`, `hits`) VALUES('$errorType', '$req', '1')");
 }
 
