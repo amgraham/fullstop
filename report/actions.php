@@ -22,7 +22,7 @@
     <?php 
 
 
-	require("./configuration.php"); 
+	require("./functions.php"); 
 
 	//debug($_POST);
 

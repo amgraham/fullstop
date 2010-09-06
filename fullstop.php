@@ -30,9 +30,11 @@ if ($_SERVER["REQUEST_URI"] == "/favicon.ico") {
 //define and connect to the database
 //
 
-if (!@mysql_connect('localhost', 'root', 'humpty')) {   include("./assets/codes/db.html"); die(); }
+include_once("./settings.php");
 
-if (!@mysql_select_db('dev_full-stop')) {   include("./assets/codes/db.html"); die(); }
+if (!@mysql_connect(dbH, dbU, dbP)) {   include("./assets/codes/db.html"); die(); }
+
+if (!@mysql_select_db(dbD)) {   include("./assets/codes/db.html"); die(); }
 
 //
 //set some configuration options; leave as the default unless you know what you're doing

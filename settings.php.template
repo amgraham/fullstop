@@ -1,0 +1,6 @@
+<?php
+define(dbH, "localhost"); 
+define(dbU, "root"); 
+define(dbP, "humpty"); 
+define(dbD, "dev_full-stop");
+?>

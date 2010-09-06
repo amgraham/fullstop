@@ -1,5 +1,5 @@
 	<?php 	
-	include_once("./configuration.php");
+	include_once("./functions.php");
 	 if ($_GET["view"] == "ignore") {
     	$load = mysql_query("SELECT * FROM  events WHERE `ignore` = 1 AND `trash` = 0 ORDER BY request ASC ");
     	?>
