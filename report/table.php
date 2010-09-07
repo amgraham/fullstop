@@ -16,7 +16,7 @@
     	$load = mysql_query("SELECT * FROM  events WHERE `ignore` = 0 AND `trash` = 1 ORDER BY request ASC ");
 	?>
 		<p><label for="action">These are the previous entries you&apos;ve deleted, you can now delete them <em>for real</em></label>
-		<input type="hidden" name="action" value="confirmDelete" />
+		<input type="hidden" name="action" value="reallyDelete" />
 		<input type="submit" value="Process!" /> &larr; It's <em>very</em> exciting!</p>
     <?php } else {
     	$load = mysql_query("SELECT * FROM  events WHERE `ignore` = 0 AND `trash` = 0 ORDER BY request ASC");

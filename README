@@ -1,0 +1,3 @@
+Fullstop is an application to catch, and display error codes in Apache (linux).
+
+It catches errors quite well, however, currently, it lacks in presentation of them. It should not be considered production ready, and really, is just a fun project for the developer.

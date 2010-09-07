@@ -40,6 +40,23 @@
 			foreach ($_POST as $id=>$int) {
 				$ids[] = str_replace('id_', '', $id);
 			}
+			$query = "UPDATE events SET trash = 1 WHERE id IN (".implode(',', $ids).")";
+			
+			if (mysql_query($query)) {
+				$memo->set(count($ids)." event(s) trashed&hellip;");
+				header("Location: ./");
+			} else {
+				echo mysql_error();
+				die("Could not delete");
+			}
+		break;
+	
+		case "reallyDelete":
+			array_shift($_POST);
+			
+			foreach ($_POST as $id=>$int) {
+				$ids[] = str_replace('id_', '', $id);
+			}
 			$query = "DELETE FROM events WHERE id IN (".implode(',', $ids).")";
 			
 			if (mysql_query($query)) {
